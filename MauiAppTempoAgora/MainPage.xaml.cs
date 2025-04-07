@@ -1,6 +1,5 @@
 ﻿using MauiAppTempoAgora.Models;
 using MauiAppTempoAgora.Services;
-using System.Threading.Tasks;
 
 namespace MauiAppTempoAgora
 {
@@ -25,12 +24,16 @@ namespace MauiAppTempoAgora
                     {
                         string dados_previsao = "";
 
-                        dados_previsao = $"Latitude: {t.lat} \n" +
-                                         $"Longitude: {t.lon} \n" +
-                                         $"Nascer do Sol: {t.sunrise} \n" +
-                                         $"Por do Sol: {t.sunset} \n" +
-                                         $"Temp Máx: {t.temp_max} \n" +
-                                         $"Temp Min: {t.temp_min} \n";
+                        dados_previsao = dados_previsao = $"Latitude: {t.lat} \n" +
+                                                          $"Longitude: {t.lon} \n" +
+                                                          $"Nascer do Sol: {t.sunrise} \n" +
+                                                          $"Por do Sol: {t.sunset} \n" +
+                                                          $"Temp Máx: {t.temp_max} \n" +
+                                                          $"Temp Min: {t.temp_min} \n" +
+                                                          $"Clima: {t.description} \n" +
+                                                          $"Velocidade do Vento: {t.speed} m/s \n" +
+                                                          $"Visibilidade: {t.visibility} metros\n";
+
 
                         lbl_res.Text = dados_previsao;
 
@@ -46,7 +49,8 @@ namespace MauiAppTempoAgora
                 }
             } catch (Exception ex)
             {
-                await DisplayAlert("Ops", ex.Message, "OK");
+            
+                await DisplayAlert("Ops!", ex.Message, "OK");
             }
         }
     }
